@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from "../app.service";
+
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
   title = 'Incident';
-  constructor() { }
+  Role = "";
+  authenticated=false;
+  constructor(private app: AppService) { }
 
   ngOnInit() {
+    this.Role=this.app.Role;
+    this.authenticated=this.app.authenticated;
+    console.log(this.Role);
   }
 
 }

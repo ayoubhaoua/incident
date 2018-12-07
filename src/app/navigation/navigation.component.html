@@ -7,21 +7,22 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" routerLink="accueil" routerLinkActive="active">Accueil</a>
+        <a class="nav-link" routerLink="/accueil" routerLinkActive="active">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="tableaubord/stat" routerLinkActive="active">Tableau de bord</a>
+        <a class="nav-link " routerLink="/tableaubord/stat" routerLinkActive="active">Tableau de bord</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " routerLink="cartographie" routerLinkActive="active">Cartographie</a>
+        <a class="nav-link " routerLink="/cartographie" routerLinkActive="active">Cartographie</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " routerLink="dashboards/v1" routerLinkActive="active">Incidents</a>
+      <li class="nav-item" [hidden]="Role!='ROLE_USER'">
+        <a class="nav-link " routerLink="/incident" routerLinkActive="active">Mes incidents</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " routerLink="dashboards/v1" routerLinkActive="active">Gestion des utilisateurs</a>
+      <li class="nav-item"[hidden]="Role!='ROLE_ADMIN'">
+        <a class="nav-link " routerLink="/administration" routerLinkActive="active">Administration</a>
       </li>
     </ul>
-      <a href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">S'identifier</a>
+      <a [hidden]="authenticated" href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">S'identifier</a>
+      <a [hidden]="!authenticated" href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</a>
   </div>
 </nav>

@@ -1,0 +1,14 @@
+<select class="form-control" (change)="selected($event.target.value)" name="sellist1">
+  <option>All</option>
+  <option *ngFor="let f of filter">
+    {{f}}
+  </option>
+</select>
+<br><br><br>
+<div class="list-group-item" *ngFor="let i of incidents"  [hidden]="i.etat!=selectedoption && All">
+<button class="btn btn-link" (click)="open(i)">
+  {{i.description}}
+</button>
+<div class="float-right text-info">{{i.etat}}</div>
+</div>
+

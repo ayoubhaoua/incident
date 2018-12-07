@@ -1,0 +1,38 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{incident.description}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <div class="text-center">
+              <img src="http://localhost:8080/api/img/{{incident.id+'.jpg'}}" width="300" height="230">
+            </div>
+          <div class="row">
+              <div class="col-sm">secteur :</div>
+              <div class="col-sm">{{incident.secteur}}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm">date :</div>
+              <div class="col-sm">{{incident.date}}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm">province :</div>
+              <div class="col-sm">{{incident.province}}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm">etat :</div>
+              <div class="col-sm">{{incident.etat}}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm">professionnelle :</div>
+              <div class="col-sm">{{incident.professionnelle}}</div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      </div>
+    </div>
+</div>

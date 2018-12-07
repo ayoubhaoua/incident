@@ -1,7 +1,7 @@
 <select class="form-control" (change)="selected($event.target.value)" name="sellist1">
   <option>All</option>
-  <option *ngFor="let province of provinces">
-    {{province.province}}
+  <option *ngFor="let f of filter">
+    {{f}}
   </option>
 </select>
 <div [chart]="chart"></div>

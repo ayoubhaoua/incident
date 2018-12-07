@@ -1,28 +1,31 @@
 
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-body">
-          <h5 class="card-title text-center">Sign In</h5>
-          <form class="form-signin">
-            <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-              <label for="inputEmail" >Email address</label>
-            </div>
+<div class="alert alert-danger" [hidden]="!error">
+  There was a problem logging in. Please try again.
+</div>
 
-            <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-              <label for="inputPassword">Password</label>
-            </div>
-
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">Remember password</label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-            <hr class="my-4">
-          </form>
-        </div>
-      </div>
-    </div>
+<body>
+<form role="form"  (submit)="login()">
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" id="username" name="username" [(ngModel)]="credentials.username">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="password" name="password" [(ngModel)]="credentials.password">
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+</body>

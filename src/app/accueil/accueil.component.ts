@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-accueil',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
   title = 'Incident';
-  constructor() { }
+  constructor(private app:AppService) { }
 
   ngOnInit() {
+    console.log(this.app.authenticated);
   }
 }

@@ -8,16 +8,16 @@ import {GetService} from "../../get.service";
   styleUrls: ['./statistiques.component.css']
 })
 export class StatistiquesComponent implements OnInit {
-  public provinces;
+  public filter;
   constructor(private get:GetService) { }
   stat: any;
   selectedoption: string="All";
 
   ngOnInit() {
     this.statall();
-      this.get.getall().subscribe(
-        (res)=> {this.provinces=res},
-        (err)=> {alert("erreure lors de Get!!")}
+      this.get.getprov().subscribe(
+        (res)=> {this.filter=res},
+        (err)=> {alert("erreure lors de Get des prov!!")}
       )
   }
   public chart = new Chart({
@@ -35,23 +35,10 @@ export class StatistiquesComponent implements OnInit {
     this.get.getstatprov(this.selectedoption).subscribe(
       (res) =>{
         this.stat=res;
+        this.chart.removeSerie(0);
         this.chart.addSerie({
-            data: [
-              {
-                name: 'eau',
-                y: res.eau
-              },
-              {
-                name: 'electricite',
-                y: res.electricite
-              },
-              {
-                name: 'infrastructure',
-                y: res.infrastructure
-              }
-            ]
-          }
-          )
+            data :  this.stat
+          })
       } ,
       (err) => {
         alert("ereure hors de la reception des statistiques");
