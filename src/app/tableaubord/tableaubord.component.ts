@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableaubordComponent implements OnInit {
 
+  option="secteur"
   constructor() { }
 
   ngOnInit() {

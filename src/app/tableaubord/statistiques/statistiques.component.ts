@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {Chart} from "angular-highcharts";
 import {GetService} from "../../get.service";
 
@@ -7,11 +7,11 @@ import {GetService} from "../../get.service";
   templateUrl: './statistiques.component.html',
   styleUrls: ['./statistiques.component.css']
 })
-export class StatistiquesComponent implements OnInit {
+export class StatistiquesComponent implements OnInit, OnChanges{
   public filter;
   constructor(private get:GetService) { }
-  stat: any;
   selectedoption: string="All";
+  @Input() option:'secteur';
 
   ngOnInit() {
     this.statall();
@@ -20,24 +20,27 @@ export class StatistiquesComponent implements OnInit {
         (err)=> {alert("erreure lors de Get des prov!!")}
       )
   }
+  ngOnChanges(changes: SimpleChanges) {
+   this.statall();
+  }
   public chart = new Chart({
     chart: {
       type: 'pie'
     },
     title: {
-      text: 'Secteur'
+      text: ''
     },
     credits: {
       enabled: false
     }
   });
+
    statall(){
-    this.get.getstatprov(this.selectedoption).subscribe(
+    this.get.getstatprov(this.selectedoption,this.option).subscribe(
       (res) =>{
-        this.stat=res;
         this.chart.removeSerie(0);
         this.chart.addSerie({
-            data :  this.stat
+            data :  res
           })
       } ,
       (err) => {

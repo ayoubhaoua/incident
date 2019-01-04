@@ -24,22 +24,10 @@
           </div>
           <div class="row">
                 <div class="col-sm">etat :</div>
-                <select class="col-sm form-control" id="etat" name="etat" value={{incident.etat}} [(ngModel)]="incident.etat">
-                    <option value="accepté">accepter</option>
-                    <option value="refusé">refuser</option>
+                <select class="col-sm form-control" id="etat" name="etat" value={{incident.etat}}  [(ngModel)]="incident.etat">
+                    <option value="on cours">on cours</option>
+                    <option value="traité">traité</option>
                 </select>
-          </div>
-          <div class="row" [hidden]="incident.etat!='refusé'">
-                <label for="motif" class="bg-danger text-white">Motif:</label>
-                <textarea class="form-control" rows="3" placeholder={{incident.motif}} id="motif" name="motif" [(ngModel)]="incident.motif"></textarea>
-            </div>
-          <div class="row" [hidden]="incident.etat!='accepté'">
-              <div class="col-sm">professionnelle :</div>
-              <select class="col-sm form-control" id="pro" value={{stringify(incident.pro)}} name="pro" [(ngModel)]="incident.pro">
-                <option *ngFor="let prof of profs" value={{stringify(prof)}}>
-                    {{prof.username}}
-                </option>
-              </select>
           </div>
       </div>
       <div class="modal-footer">

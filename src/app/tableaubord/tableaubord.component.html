@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+<app-sidebar (switching)='option=$event'></app-sidebar>
 <div class="main">
-<router-outlet></router-outlet>
+<app-statistiques [option]="option"></app-statistiques>
 </div>

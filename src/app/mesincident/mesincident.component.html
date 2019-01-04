@@ -1,3 +1,24 @@
-<p>
-  mesincident works!
-</p>
+<select class="form-control" (change)="selected($event.target.value)" name="sellist1">
+  <option>All</option>
+  <option> on cours </option>
+  <option> traité </option>
+</select>
+<br><br><br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">type</th>
+      <th scope="col">secteur</th>
+      <th scope="col">etat</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of incidents"  [hidden]="i.etat!=selectedoption && All">
+      <th scope="row" ><a (click)="open(i)" class="btn text-primary">{{i.type.type}}</a></th>
+      <td>{{i.secteur.secteur}}</td>
+      <td>{{i.etat}}</td>
+      <td>{{i.date}}</td>
+    </tr>
+</table>

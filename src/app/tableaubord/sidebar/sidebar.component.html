@@ -4,10 +4,16 @@
 
   <div class="list-group list-group-flush">
 
-    <button class="list-group-item list-group-item-action waves-effect active">
+    <button class="list-group-item list-group-item-action waves-effect" 
+    [ngClass]="{'active': !switchf}"
+    (click)="switchf=false;valuechanged()"
+    >
       Secteur
     </button>
-    <button class="list-group-item list-group-item-action waves-effect">
+    <button class="list-group-item list-group-item-action waves-effect"
+    [ngClass]="{'active': switchf}"
+    (click)="switchf=true; valuechanged()"
+    >
       Type
     </button>
   </div>

@@ -7,7 +7,8 @@ export class AppService {
 
   authenticated = false;
   BASE_URL="http://localhost:8080";
-  Role=''
+  Role='';
+  username='';
 
   constructor(private http: HttpClient, private cookieservice :CookieService) {
   }
@@ -16,16 +17,30 @@ export class AppService {
     if(credentials) {
       const token =btoa(credentials.username + ':' + credentials.password);
       this.cookieservice.set('token',token);
-    this.http.get(this.BASE_URL+'/user/user').subscribe(response => {
-      if (response['name']) {
-        this.authenticated = true;
-        this.Role=response['authorities'][0].authority;
-      } else {
-        this.authenticated = false;
-      }
-      return callback && callback();
-    })
+      this.auth(callback);
     }
   }
+
+  auth(callback){
+  this.http.get(this.BASE_URL+'/user/user').subscribe(response => {
+    if (response['name']) {
+      console.log(response['name'])
+      this.username=response['name'];
+      this.authenticated = true;
+      this.Role=response['authorities'][0].authority;
+      console.log("test&&&");
+    } else {
+      this.authenticated = false;
+      this.Role='';
+    }
+    return callback && callback();
+  })
+}
+
+logout(){
+  this.cookieservice.delete("token");
+  this.authenticated = false;
+  this.Role='';
+}
 
 }

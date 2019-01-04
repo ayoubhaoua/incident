@@ -13,7 +13,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { SidebarComponent } from './tableaubord/sidebar/sidebar.component';
 import { StatistiquesComponent } from './tableaubord/statistiques/statistiques.component';
 import {ChartModule} from "angular-highcharts";
-import { ReactiveFormsModule, FormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {AppService} from "./app.service";
 import {XhrInterceptor} from "./xhr.interceptor";
 import {CookieService} from  "ngx-cookie-service";
@@ -22,8 +22,11 @@ import { AdminstrationComponent } from './adminstration/adminstration.component'
 import { AsidebarComponent } from './adminstration/asidebar/asidebar.component';
 import { IncidentsComponent } from './adminstration/incidents/incidents.component';
 import { ModalComponent } from './modal/modal.component';
-import { TestComponent } from './adminstration/test/test.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProfessionelsComponent } from './adminstration/professionels/professionels.component';
+import { NouveauComponent } from './adminstration/professionels/nouveau/nouveau.component';
+import { ListprofComponent } from './adminstration/professionels/listprof/listprof.component';
+import { ModalproComponent } from './modalpro/modalpro.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     AdminstrationComponent,
     AsidebarComponent,
     ModalComponent,
-    TestComponent
+    ModalproComponent,
+    ProfessionelsComponent,
+    NouveauComponent,
+    ListprofComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,8 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ModalComponent
+    ModalComponent,
+    ModalproComponent
   ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output()
+   switching = new EventEmitter();
+   switchf:boolean;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  valuechanged(){
+    if(this.switchf)
+      this.switching.emit("type");
+    else
+     this.switching.emit("secteur");
   }
 
 }

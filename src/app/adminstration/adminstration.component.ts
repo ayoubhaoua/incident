@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adminstration.component.css']
 })
 export class AdminstrationComponent implements OnInit {
+  option="incidents";
 
   constructor() { }
 

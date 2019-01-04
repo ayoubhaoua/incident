@@ -5,10 +5,25 @@
   </option>
 </select>
 <br><br><br>
-<div class="list-group-item" *ngFor="let i of incidents"  [hidden]="i.etat!=selectedoption && All">
-<button class="btn btn-link" (click)="open(i)">
-  {{i.description}}
-</button>
-<div class="float-right text-info">{{i.etat}}</div>
-</div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">type</th>
+      <th scope="col">secteur</th>
+      <th scope="col">professionnel</th>
+      <th scope="col">etat</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of incidents"  [hidden]="i.etat!=selectedoption && All">
+      <th scope="row" ><a (click)="open(i)" class="btn text-primary">{{i.type.type}}</a></th>
+      <td>{{i.secteur.secteur}}</td>
+      <td>{{i.pro==null? null: i.pro.username}}</td>
+      <td>{{i.etat}}</td>
+      <td><a class="btn btn-danger" (click)="del(i.id)">
+        <i class="fa fa-trash-o fa-lg"></i></a>
+      </td>
+    </tr>
+</table>

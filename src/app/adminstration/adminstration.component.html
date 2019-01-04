@@ -1,4 +1,5 @@
-<app-asidebar></app-asidebar>
+<app-asidebar (switching)='option=$event'></app-asidebar>
 <div class="main">
-<app-incidents ></app-incidents>
+<app-incidents [hidden]="option!='incidents'"></app-incidents>
+<app-professionels [hidden]="option!='professionnels'"></app-professionels>
 </div>

@@ -4,11 +4,9 @@ import {CartographieComponent} from "./cartographie/cartographie.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {TableaubordComponent} from "./tableaubord/tableaubord.component";
 import {LoginComponent} from "./login/login.component";
-import {StatistiquesComponent} from "./tableaubord/statistiques/statistiques.component";
 import { NavigationComponent } from './navigation/navigation.component';
 import { MesincidentComponent } from './mesincident/mesincident.component';
 import { AdminstrationComponent } from './adminstration/adminstration.component';
-import { IncidentsComponent } from './adminstration/incidents/incidents.component';
 
 
 const routes: Routes = [
@@ -32,9 +30,6 @@ const routes: Routes = [
   {
     path:'tableaubord',
     component: TableaubordComponent,
-    children:[
-      { path: 'stat', component: StatistiquesComponent }
-    ]
   },
   {
     path:'',
